@@ -1,9 +1,6 @@
 package com.jony.crudjava.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,27 +12,28 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@With
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private String password;
+    //@NotNull
+    //private String password;
 
     private String name;
 
-    private String email;
+    //private String email;
 
-    private String role;
+    //private String role;
 
-    private String office;
+    //private String office;
 
-    private LocalDate admissionDate;
+    //private LocalDate admissionDate;
 
-    private LocalDate expirationDate;
+    //private LocalDate expirationDate;
 
 }
