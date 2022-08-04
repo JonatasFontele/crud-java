@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
+//@RequestMapping("/user")
 public class UserController {
 
     private UserService userService;
@@ -15,8 +18,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("api/user/{id}")
-    public User getUserById(@PathVariable long id) throws Exception {
+    //@GetMapping
+    //public List findAll(){
+        //return userService.findAll();
+    //}
+
+    //@GetMapping(path = {"/{id}"})
+    //public ResponseEntity findById(@PathVariable long id){
+        //return repository.findById(id)
+                //.map(record -> ResponseEntity.ok().body(record))
+                //.orElse(ResponseEntity.notFound().build());
+    //}
+
+    @GetMapping("/api/user/{id}")
+    public User getUserById(@PathVariable Long id) throws Exception {
         return userService.findById(id);
     }
 }

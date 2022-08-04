@@ -16,7 +16,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User findById(long id) throws UsernameNotFoundException {
+    public User findById(Long id) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findById(id);
         if(userOptional.isEmpty()){
             throw new UsernameNotFoundException("Usuário não encontrado");
