@@ -2,14 +2,12 @@ package com.jony.crudjava.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "user", schema = "system")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,6 +22,7 @@ public class User {
     //@NotNull
     //private String password;
 
+    @NotNull
     private String name;
 
     //private String email;
