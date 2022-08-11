@@ -3,6 +3,7 @@ package com.jony.crudjava.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -23,6 +24,7 @@ public class User {
     //private String password;
 
     @NotNull
+    @NotEmpty
     private String name;
 
     //private String email;

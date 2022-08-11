@@ -29,7 +29,7 @@ class UserServiceTest {
 
         when(userRepository.findById(1L)).thenReturn(user);
 
-        User foundUser = userService.findById(1L);
+        Optional<User> foundUser = userService.findUserById(1L);
 
         assertThat(foundUser).isEqualTo(user.get());
 
@@ -46,7 +46,7 @@ class UserServiceTest {
         when(userRepository.findById(1L)).thenReturn(user);
 
         assertThrows(UsernameNotFoundException.class, () -> {
-            User foundUser = userService.findById(1L);
+            Optional<User> foundUser = userService.findUserById(1L);
         });
 
         verify(userRepository).findById(1L);
