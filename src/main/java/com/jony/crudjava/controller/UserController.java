@@ -3,6 +3,7 @@ package com.jony.crudjava.controller;
 import com.jony.crudjava.model.User;
 import com.jony.crudjava.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +22,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public Iterable<User> getAllUsers(){
         return userService.findAllUsers();
     }
 
     @GetMapping("/getUserByName/{name}")
-    public Optional<User> getUserByName(@PathVariable String name) {
+    public Iterable<User> getUserByName(@PathVariable String name) {
         return userService.findUserByName(name);
     }
 
@@ -38,6 +39,25 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.findUserById(id)
+                .map(record -> {
+                    record.setName(user.getName());
+                    User updated = userService.createUser(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        return userService.findUserById(id)
+                .map(record -> {
+                    userService.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 
 }

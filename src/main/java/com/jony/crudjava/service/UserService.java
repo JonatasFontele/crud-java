@@ -16,11 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAllUsers() {
+    public Iterable<User> findAllUsers() {
         return userRepository.findAll();
     }
 
-    public Optional<User> findUserByName(String name) {
+    public Iterable<User> findUserByName(String name) {
         return userRepository.findUserByName(name);
     }
 
@@ -29,15 +29,18 @@ public class UserService {
     }
 
     //public User findUserById(Long id) throws UsernameNotFoundException {
-        //Optional<User> userOptional = userRepository.findById(id);
-        //if(userOptional.isEmpty()){
-            //throw new UsernameNotFoundException("Usuário não encontrado");
-        //}
-        //return userOptional.get();
+    //    Optional<User> userOptional = userRepository.findById(id);
+    //    if(userOptional.isEmpty()){
+    //        throw new UsernameNotFoundException("Usuário não encontrado");
+    //    }
+    //    return userOptional.get();
     //}
 
     public User createUser(User user){
         return userRepository.save(user);
     }
 
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 }
