@@ -2,9 +2,9 @@ package com.jony.crudjava.service;
 
 import com.jony.crudjava.model.User;
 import com.jony.crudjava.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,7 +17,7 @@ public class UserService {
     }
 
     public Iterable<User> findAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     public Iterable<User> findUserByName(String name) {
