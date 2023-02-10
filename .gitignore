@@ -46,4 +46,8 @@ target/
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 src/main/resources/application.properties
+=======
+resources/application.properties
+>>>>>>> refs/remotes/origin/main
