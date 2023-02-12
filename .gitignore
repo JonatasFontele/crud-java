@@ -32,7 +32,7 @@ target/
 .apt_generated
 .classpath
 .factorypath
-.project
+.projectgit
 .settings
 .springBeans
 .sts4-cache
@@ -46,3 +46,4 @@ target/
 ### VS Code ###
 .vscode/
 
+src/main/resources/application.properties

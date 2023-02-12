@@ -1,2 +1,2 @@
 # crud-java
-First java with spring crud
+First backend crud project of a user using java, spring boot and JpaRepository. 
